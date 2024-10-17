@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
+      create: (context) => AppState(),
       child: MaterialApp(
         title: 'Namer App',
         theme: ThemeData(
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyAppState extends ChangeNotifier {
+class AppState extends ChangeNotifier {
   var current = WordPair.random();
 
   void getNext() {
@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    var appState = context.watch<AppState>();
     var pair = appState.current;
 
     IconData icon;
@@ -188,7 +188,7 @@ class BigCard extends StatelessWidget {
 class FavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    var appState = context.watch<AppState>();
     var favorites = appState.favorites;
 
     if (favorites.isEmpty) {
